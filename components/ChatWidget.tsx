@@ -1,16 +1,34 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { SparklesIcon, XIcon, SendIcon } from './Icon';
-import { getChatResponse } from '../services/geminiService';
+import React, { useState, useEffect, useRef } from 'react';
+import { MessageCircle, X, Send, Minimize, Maximize, RefreshCw } from 'lucide-react';
+import { getChatResponse, checkServerStatus } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
-const ChatWidget: React.FC = () => {
+const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: "Hi! I'm Venu's AI Assistant. Ask me anything about his experience at Google, Radius AI, or his current work at ZoFit.ai!", timestamp: new Date() }
+    { role: 'model', text: "Hi there! I'm Venu's AI assistant. Ask me anything about his experience, skills, or education." }
   ]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isOnline, setIsOnline] = useState(false);
+  const [isChecking, setIsChecking] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Function to check connection
+  const verifyConnection = async () => {
+    setIsChecking(true);
+    const status = await checkServerStatus();
+    setIsOnline(status);
+    setIsChecking(false);
+  };
+
+  // Check on mount and periodically
+  useEffect(() => {
+    verifyConnection();
+    const interval = setInterval(verifyConnection, 60000); // Check every minute
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -20,66 +38,107 @@ const ChatWidget: React.FC = () => {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  const handleSend = async () => {
+  const handleSendMessage = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     if (!inputText.trim() || isLoading) return;
 
-    const userMessage: ChatMessage = { role: 'user', text: inputText, timestamp: new Date() };
-    
-    // Update UI immediately with user message
-    const newMessages = [...messages, userMessage];
-    setMessages(newMessages);
+    const userMessage: ChatMessage = { role: 'user', text: inputText };
+    setMessages(prev => [...prev, userMessage]);
     setInputText('');
     setIsLoading(true);
 
     try {
-      // Pass the entire message history to the service
+      // Pass message history to the service
       const responseText = await getChatResponse(inputText, messages);
-      setMessages(prev => [...prev, { role: 'model', text: responseText, timestamp: new Date() }]);
+      
+      const botMessage: ChatMessage = { role: 'model', text: responseText };
+      setMessages(prev => [...prev, botMessage]);
+      
+      // If the response does NOT contain "offline mode" or "trouble connecting", we are online!
+      if (!responseText.toLowerCase().includes("offline mode") && !responseText.toLowerCase().includes("trouble connecting")) {
+          setIsOnline(true);
+      } else {
+          setIsOnline(false);
+      }
     } catch (error) {
-      console.error("Chat Error:", error);
-      setMessages(prev => [...prev, { role: 'model', text: "Sorry, I'm having trouble connecting to the server right now. Please try again later.", timestamp: new Date() }]);
+      console.error("Chat error:", error);
+      setMessages(prev => [...prev, { role: 'model', text: "I'm having trouble connecting right now. Please try again later." }]);
+      setIsOnline(false);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
+  if (!isOpen) {
+    return (
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 z-50 flex items-center gap-2"
+      >
+        <MessageCircle size={24} />
+        <span className="font-medium hidden sm:inline">Chat with AI Venu</span>
+        {/* Mini Status Dot on closed button */}
+        <span className={`w-3 h-3 rounded-full border-2 border-blue-600 absolute top-0 right-0 ${isOnline ? 'bg-green-400' : 'bg-gray-400'}`}></span>
+      </button>
+    );
+  }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-      {/* Chat Window */}
-      {isOpen && (
-        <div className="mb-4 w-[90vw] max-w-sm h-[500px] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden animate-fade-in-up">
-          {/* Header */}
-          <div className="bg-slate-900 text-white p-4 flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <div className="p-1 bg-blue-500 rounded-full">
-                <SparklesIcon className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-sm">Chat with Venu's AI</h3>
-                <p className="text-xs text-slate-400">Powered by Qwen 2.5 & Hugging Face</p>
-              </div>
+    <div className={`fixed right-4 z-50 bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 flex flex-col
+      ${isMinimized ? 'bottom-4 w-72 h-14' : 'bottom-4 w-[90vw] sm:w-96 h-[500px] max-h-[80vh]'}`}
+    >
+      {/* Header */}
+      <div className="bg-blue-600 p-3 flex items-center justify-between text-white cursor-pointer" onClick={() => !isMinimized && setIsMinimized(!isMinimized)}>
+        <div className="flex items-center gap-2">
+          <MessageCircle size={20} />
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm">AI Assistant</span>
+            {/* Status Indicator */}
+            <div className="flex items-center gap-1.5" title={isOnline ? "Server Connected" : "Running Locally (Server Unreachable)"}>
+              <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-400' : 'bg-gray-300'}`}></div>
+              <span className="text-[10px] uppercase tracking-wider font-medium opacity-90">
+                {isChecking ? 'Checking...' : (isOnline ? 'Online' : 'Offline Mode')}
+              </span>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-white transition-colors">
-              <XIcon className="w-5 h-5" />
-            </button>
           </div>
+        </div>
+        <div className="flex items-center gap-2">
+           {/* Retry Button (Visible only when offline) */}
+           {!isOnline && !isChecking && (
+            <button 
+              onClick={(e) => { e.stopPropagation(); verifyConnection(); }}
+              className="p-1 hover:bg-blue-700 rounded"
+              title="Retry Connection"
+            >
+              <RefreshCw size={14} />
+            </button>
+          )}
+          <button 
+            onClick={(e) => { e.stopPropagation(); setIsMinimized(!isMinimized); }}
+            className="p-1 hover:bg-blue-700 rounded"
+          >
+            {isMinimized ? <Maximize size={16} /> : <Minimize size={16} />}
+          </button>
+          <button 
+            onClick={(e) => { e.stopPropagation(); setIsOpen(false); }}
+            className="p-1 hover:bg-blue-700 rounded"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      </div>
 
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 bg-slate-50 space-y-4 scrollbar-hide">
+      {/* Chat Area (Hidden when minimized) */}
+      {!isMinimized && (
+        <>
+          <div className="flex-1 overflow-y-auto p-4 bg-gray-50 space-y-4">
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div 
-                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                  className={`max-w-[80%] p-3 rounded-lg text-sm ${
                     msg.role === 'user' 
                       ? 'bg-blue-600 text-white rounded-br-none' 
-                      : 'bg-white text-slate-700 shadow-sm border border-slate-100 rounded-bl-none'
+                      : 'bg-white border border-gray-200 text-gray-800 rounded-bl-none shadow-sm'
                   }`}
                 >
                   {msg.text}
@@ -87,58 +146,40 @@ const ChatWidget: React.FC = () => {
               </div>
             ))}
             {isLoading && (
-               <div className="flex justify-start">
-               <div className="bg-white p-3 rounded-2xl rounded-bl-none shadow-sm border border-slate-100 flex gap-1 items-center">
-                 <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></span>
-                 <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-75"></span>
-                 <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-150"></span>
-               </div>
-             </div>
+              <div className="flex justify-start">
+                <div className="bg-white border border-gray-200 p-3 rounded-lg rounded-bl-none shadow-sm flex gap-1 items-center">
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                </div>
+              </div>
             )}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
-          <div className="p-3 bg-white border-t border-slate-100">
-            <div className="relative">
-              <input 
-                type="text" 
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                onKeyDown={handleKeyPress}
-                placeholder="Ask about my product experience..."
-                className="w-full pl-4 pr-12 py-3 bg-slate-50 border border-slate-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
-              />
-              <button 
-                onClick={handleSend}
-                disabled={isLoading || !inputText.trim()}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                <SendIcon className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
+          {/* Input Area */}
+          <form onSubmit={handleSendMessage} className="p-3 bg-white border-t border-gray-200 flex gap-2">
+            <input
+              type="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder="Ask about Venu's experience..."
+              className="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-sm"
+            />
+            <button 
+              type="submit"
+              disabled={isLoading || !inputText.trim()}
+              className={`p-2 rounded-md text-white transition-colors ${
+                isLoading || !inputText.trim() 
+                  ? 'bg-gray-400 cursor-not-allowed' 
+                  : 'bg-blue-600 hover:bg-blue-700'
+              }`}
+            >
+              <Send size={18} />
+            </button>
+          </form>
+        </>
       )}
-
-      {/* Toggle Button */}
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className={`group flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-300 hover:scale-105 ${isOpen ? 'bg-slate-700 rotate-90' : 'bg-gradient-to-r from-blue-600 to-indigo-600'}`}
-      >
-        {isOpen ? (
-          <XIcon className="w-6 h-6 text-white transition-transform duration-300 -rotate-90" />
-        ) : (
-          <SparklesIcon className="w-7 h-7 text-white" />
-        )}
-        
-        {/* Tooltip hint */}
-        {!isOpen && (
-          <span className="absolute right-16 bg-slate-900 text-white text-xs py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            Ask AI Venu
-          </span>
-        )}
-      </button>
     </div>
   );
 };
