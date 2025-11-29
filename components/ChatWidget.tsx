@@ -24,16 +24,20 @@ const ChatWidget: React.FC = () => {
     if (!inputText.trim() || isLoading) return;
 
     const userMessage: ChatMessage = { role: 'user', text: inputText, timestamp: new Date() };
-    setMessages(prev => [...prev, userMessage]);
+    
+    // Update UI immediately with user message
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setInputText('');
     setIsLoading(true);
 
     try {
-      const responseText = await getChatResponse(userMessage.text);
+      // Pass the entire message history to the service
+      const responseText = await getChatResponse(inputText, messages);
       setMessages(prev => [...prev, { role: 'model', text: responseText, timestamp: new Date() }]);
     } catch (error) {
-      console.error(error);
-      setMessages(prev => [...prev, { role: 'model', text: "Sorry, I had trouble thinking of an answer.", timestamp: new Date() }]);
+      console.error("Chat Error:", error);
+      setMessages(prev => [...prev, { role: 'model', text: "Sorry, I'm having trouble connecting to the server right now. Please try again later.", timestamp: new Date() }]);
     } finally {
       setIsLoading(false);
     }
@@ -59,7 +63,7 @@ const ChatWidget: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-sm">Chat with Venu's AI</h3>
-                <p className="text-xs text-slate-400">Powered by Gemini 2.5 Flash</p>
+                <p className="text-xs text-slate-400">Powered by Qwen 2.5 & Hugging Face</p>
               </div>
             </div>
             <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-white transition-colors">
