@@ -1,4 +1,3 @@
-import { client } from "@gradio/client";
 import { ChatMessage } from '../types';
 
 // Your actual Hugging Face Space URL
@@ -6,71 +5,100 @@ const HF_SPACE_URL = "https://venugopinath-resume-assistant.hf.space";
 
 export const checkServerStatus = async (): Promise<boolean> => {
   try {
-    // Use fetch for a lightweight check first
-    // We use 'HEAD' to just check headers
-    const resp = await fetch(HF_SPACE_URL, { method: 'HEAD' });
-    return resp.ok || resp.status === 404 || resp.status === 405; 
+    // Lightweight HTTP check using no-cors to avoid console spam
+    // If the server is awake, this usually completes without network error
+    await fetch(HF_SPACE_URL, { method: 'HEAD', mode: 'no-cors' });
+    return true;
   } catch (error) {
-    // If fetch fails (e.g. strict CORS), try the client as a backup check
-    try {
-      await client(HF_SPACE_URL, {});
-      return true;
-    } catch (e) {
-      return false;
-    }
+    return false;
   }
 };
 
 export const getChatResponse = async (message: string, history: ChatMessage[] = []): Promise<string> => {
   try {
-    console.log("Connecting to AI at:", HF_SPACE_URL);
-    
-    // 1. Connect to the Gradio App
-    const app = await client(HF_SPACE_URL, {});
+    console.log("Connecting to AI via HTTP...");
 
-    // 2. Format History
-    // ChatInterface typically expects specific history format: [[user_msg, bot_msg], ...]
-    const formattedHistory = history
-      .reduce((acc, msg, i) => {
-        if (msg.role === 'user') {
-          // Look ahead for the next message (the bot's response)
-          const nextMsg = history[i + 1];
-          if (nextMsg && nextMsg.role === 'model') {
-            acc.push([msg.text, nextMsg.text]);
-          }
-        }
-        return acc;
-      }, [] as [string, string][]);
-
-    // 3. Send the message
+    // 1. Try the dedicated Chat Interface endpoint (Recommended for ChatInterface)
     try {
-        // Try standard ChatInterface endpoint with BOTH arguments
-        const result = await app.predict("/chat", [message, formattedHistory]);
-        return (result as any).data[0] as string;
-    } catch (endpointError) {
-        console.warn("'/chat' endpoint failed, trying fallback...", endpointError);
-        
-        // 3b. Fallback: Try default function (index 0) with just message
-        const result = await app.predict(0, [message]); 
-        return (result as any).data[0] as string;
+      const chatResponse = await fetch(`${HF_SPACE_URL}/api/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          message: message,
+          // We don't pass full history here to avoid format mismatches; 
+          // ChatInterface usually manages session or handles single-turn well via API.
+        }),
+      });
+
+      if (chatResponse.ok) {
+        const json = await chatResponse.json();
+        // /api/chat usually returns { response: "..." } or { data: [...] }
+        return json.response || (json.data && json.data[0]) || (typeof json === 'string' ? json : extractResponse(json));
+      }
+    } catch (e) {
+      console.warn("'/api/chat' endpoint failed, trying fallback...", e);
     }
 
+    // 2. Fallback: Try /api/predict with just the message (Simpler is safer)
+    // Many simple Gradio apps crash if you send history in the wrong format [msg, history]
+    const response = await fetch(`${HF_SPACE_URL}/api/predict`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+            data: [message] // Try sending ONLY the message first
+        }),
+    });
+
+    if (!response.ok) {
+        // 3. Deep Fallback: Try with history as a second argument (Standard ChatInterface style)
+        // Only try this if the simple one failed
+        const formattedHistory = history.reduce((acc, msg, i) => {
+            if (msg.role === 'user' && history[i+1]?.role === 'model') {
+                acc.push([msg.text, history[i+1].text]);
+            }
+            return acc;
+        }, [] as [string, string][]);
+
+        const retryResponse = await fetch(`${HF_SPACE_URL}/api/predict`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ data: [message, formattedHistory] }),
+        });
+        
+        if (retryResponse.ok) {
+             const json = await retryResponse.json();
+             return extractResponse(json);
+        }
+        
+        throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
+    }
+
+    const json = await response.json();
+    return extractResponse(json);
+
   } catch (error: any) {
-    console.error("AI Connection Failed:", error);
+    console.error("AI Request Failed:", error);
     return getOfflineResponse(message, error.message);
   }
+};
+
+// Helper to extract text from various Gradio response formats
+const extractResponse = (json: any): string => {
+    if (json.data && Array.isArray(json.data)) {
+        return json.data[0] as string;
+    }
+    return "I received a response from the server, but it was in an unexpected format.";
 };
 
 // --- OFFLINE FALLBACK ---
 const getOfflineResponse = (message: string, debugInfo?: string): string => {
   const lowerMsg = message.toLowerCase();
   
-  // Diagnostics for debugging (User won't see this unless they type 'debug' or 'error')
-  if (lowerMsg.includes('debug') || lowerMsg.includes('error')) {
-    return `**Offline Mode Diagnostic:**\n- Target: ${HF_SPACE_URL}\n- Error: ${debugInfo || 'Unknown'}\n\n*Note: If you see a "NetworkError" or "CORS" error in your browser console, you MUST set \`cors_allowed_origins=["*"]\` in your Hugging Face \`app.py\` file.*`;
+  if (lowerMsg.includes('debug') || lowerMsg.includes('error') || lowerMsg.includes('why')) {
+    return `⚠️ **Connection Error**\n\nCould not connect to: ${HF_SPACE_URL}\n\n**Reason:** ${debugInfo || "Unknown"}\n\n**Troubleshooting:**\n1. Ensure \`app.py\` on Hugging Face has: \`demo.launch(cors_allowed_origins=["*"])\`\n2. If the Space is "Sleeping", wait 30s for it to wake up.`;
   }
 
-  if (lowerMsg.match(/^(hi|hello|hey)/)) return "Hello! I'm Venu's AI assistant. I'm currently operating in offline mode (server unreachable), but I can share details about his Experience, Education, or Skills.";
+  if (lowerMsg.match(/^(hi|hello|hey)/)) return "Hello! I'm Venu's AI assistant. I'm currently in **Offline Mode** (server connection failed), but I can answer questions about his Education, Experience, or Skills.";
 
   if (lowerMsg.includes('zofit') || lowerMsg.includes('fitness')) {
     return "At ZoFit.ai (Head of Product), Venu led iOS app development from 0 to 1 in six months and architected a 6-layered agentic AI system to personalize fitness plans.";
@@ -88,5 +116,5 @@ const getOfflineResponse = (message: string, debugInfo?: string): string => {
     return "You can reach Venu at nvg1996@gmail.com.";
   }
 
-  return "I'm currently offline and couldn't find a specific answer. However, I can tell you about Venu's **Education** or his work at **Google**, **Radius AI**, and **ZoFit**.";
+  return "I'm currently offline and couldn't find a specific answer. Please ask about Venu's **Education**, **Google**, **Radius AI**, or **ZoFit**.";
 };
