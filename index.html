@@ -1,109 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO & Metadata -->
-    <title>Venu Gopinath Nukavarapu | Product Leader & AI Strategist</title>
-    <meta name="description" content="Portfolio of Venu Gopinath Nukavarapu, Head of Product at ZoFit.ai. Experienced Product Leader bridging technical AI innovation and business strategy. Former Google Product Strategy Lead." />
-    <meta name="keywords" content="Venu Gopinath Nukavarapu, Product Manager, Head of Product, AI Strategy, ZoFit.ai, Google, Radius AI, Vibe Coding, Agentic AI, Product Leadership" />
-    <meta name="author" content="Venu Gopinath Nukavarapu" />
-    
-    <!-- Robots: Allow indexing but do not cache -->
-    <meta name="robots" content="index, follow, noarchive" />
-
+    <title>Venu Gopinath | Product Leader</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
             colors: {
-              slate: {
-                850: '#1e293b',
-                900: '#0f172a',
-              },
               primary: {
                 50: '#eff6ff',
                 100: '#dbeafe',
-                500: '#3b82f6',
                 600: '#2563eb',
                 700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
               }
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-            animation: {
-              'fade-in': 'fadeIn 0.3s ease-in-out',
-              'fade-in-up': 'fadeInUp 0.5s ease-out',
-            },
-            keyframes: {
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
-              },
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(10px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              }
-            },
-            screens: {
-              'print': {'raw': 'print'},
             }
           },
         },
       }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      html {
-        scroll-behavior: smooth;
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafc; /* Slate 50 */
+        color: #0f172a; /* Slate 900 */
       }
-      body { font-family: 'Inter', sans-serif; }
-      /* Custom scrollbar for chat */
-      .scrollbar-hide::-webkit-scrollbar {
-          display: none;
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
       }
-      .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
       }
-      @media print {
-        @page {
-          margin: 0.5cm;
-          size: auto;
-        }
-        /* Hide all main website elements */
-        nav, footer, button, .no-print, #chat-widget {
-          display: none !important;
-        }
-        body {
-          background: white !important;
-          color: black !important;
-          -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
-        }
-        #root {
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          display: block;
-        }
-        .print-only {
-          display: block !important;
-          position: static !important;
-          width: 100% !important;
-          height: auto !important;
-          overflow: visible !important;
-        }
-        /* Ensure the resume container takes full width */
-        .resume-container {
-          width: 100% !important;
-          max-width: none !important;
-          padding: 0 !important;
-          margin: 0 !important;
-        }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
       }
     </style>
 
@@ -111,19 +54,17 @@
   <script type="importmap">
 {
   "imports": {
-    "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
   }
 }
 </script>
- <script type="module" crossorigin src="/venugopinath/assets/index-DV0YDXKI.js"></script>
-
-<script type="module" crossorigin src="/assets/index-DV0YDXKI.js"></script>
+  <script type="module" crossorigin src="/assets/index-BbieOwDd.js"></script>
 </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
+  <body>
     <div id="root"></div>
 </body>
 </html>
