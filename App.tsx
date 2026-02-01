@@ -82,15 +82,7 @@ const App: React.FC = () => {
                             <div className="pt-8 border-t border-slate-200/60 mt-8">
                                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Driving impact at:</p>
                                 <div className="flex flex-wrap justify-center md:justify-start items-center gap-8 transition-all duration-500">
-                                    {/* Google */}
-                                    <div className="h-8 w-24">
-                                        <CompanyLogo src={LOGOS.GOOGLE} alt="Google" className="h-full w-full" />
-                                    </div>
 
-                                    {/* Radius AI */}
-                                    <div className="h-8 w-8">
-                                        <CompanyLogo src={LOGOS.RADIUS} alt="Radius AI" className="h-full w-full" />
-                                    </div>
 
                                     {/* ZoFit */}
                                     <div className="h-8 w-8">

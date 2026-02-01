@@ -19,7 +19,7 @@ export const LOGOS = {
 
 export const HERO_DATA = {
   name: "Venu Gopinath",
-  title: "Building 0-to-1 AI & Integration at Scale.",
+  title: "Building 0-to-1 & AI Integration at Scale.",
   tagline: "Bridging the gap between Innovation and Transformation. I help organizations pivot to AI by architecting Agentic Systems that are technically viable and commercially profitable.",
   about: "With a background in Computer Engineering and an MBA from Cambridge, I specialize in 0-to-1 product launches, AI agentic systems, and driving multi-million dollar revenue growth through strategic digital transformation."
 };
