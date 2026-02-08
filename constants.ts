@@ -28,8 +28,8 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 'zofit',
     company: "ZoFit.ai",
-    role: "Co-Founder",
-    period: "11/2024 - Present",
+    role: "Head of Product (Co-Founder)",
+    period: "11/2024 - 01/2026",
     companyDescription: "An AI-first fitness platform democratizing personal training.",
     myRoleDescription: "Identified a gap in the fitness market for hyper-personalized coaching. Bootstrapped the product vision from a whiteboard concept to a fully deployed iOS app in under 6 months, leveraging open-source LLMs to build a cost-effective Agentic architecture.",
     technologies: ["Agentic AI", "Open-source LLMs", "iOS Development", "Product Strategy"],
@@ -64,10 +64,10 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     myRoleDescription: "Served as the strategic engine for the Ad Formats business. I collaborated with Product, Sales, and Engineering leadership to translate technical capabilities into commercial growth, ensuring our GTM strategy aligned with global revenue targets.",
     technologies: ["AdTech", "SQL", "Go-To-Market", "Sales Enablement"],
     achievements: [
-      "📈 Driving strategy for a $1.2B+ ARR portfolio.",
+      "📈 Driving strategy for a $1.2B+ ARR Adformat division.",
       "🌍 Orchestrating the global GTM for 3 major product launches."
     ],
-    summary: "Led Strategy for a $1.2B Product",
+    summary: "Led Strategy for a $1.2B Adformat Division",
     logoUrl: LOGOS.GOOGLE
   },
   {

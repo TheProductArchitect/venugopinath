@@ -83,12 +83,6 @@ const App: React.FC = () => {
                                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Driving impact at:</p>
                                 <div className="flex flex-wrap justify-center md:justify-start items-center gap-8 transition-all duration-500">
 
-
-                                    {/* ZoFit */}
-                                    <div className="h-8 w-8">
-                                        <CompanyLogo src={LOGOS.ZOFIT} alt="ZoFit" className="h-full w-full" />
-                                    </div>
-
                                     {/* Cambridge */}
                                     <div className="h-8 w-8">
                                         <CompanyLogo src={LOGOS.CAMBRIDGE} alt="Cambridge" className="h-full w-full" />
@@ -134,7 +128,7 @@ const App: React.FC = () => {
                         <div className="mb-16 md:w-3/4">
                             <h2 className="text-3xl font-bold text-slate-900 font-serif mb-6">Bridging Engineering & Business Strategy</h2>
                             <p className="text-slate-600 leading-relaxed text-lg">
-                                With a foundation in Computer Engineering (MS) and business leadership (Cambridge MBA), I translate complex technical capabilities into revenue. My background spans building 6-layered Agentic AI systems for startups to driving $1.2B+ in ARR for ad formats at Google.
+                                With a foundation in Computer Engineering (MS) and business leadership (Cambridge MBA), I translate complex technical capabilities into revenue. My background spans building 6-layered Agentic AI systems for startups to driving strategy for Sell-Side Adformats at Google, a main contributor for a $1.2B+ ARR division.
                             </p>
                         </div>
 
@@ -184,12 +178,12 @@ const App: React.FC = () => {
                                 <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
                                     <div className="mb-2 text-primary-600"><TrendingUp className="w-6 h-6" /></div>
                                     <div className="text-3xl font-bold text-slate-900 mb-1">$1.2B+</div>
-                                    <div className="text-sm font-medium text-slate-500">ARR generated via Product Strategy</div>
+                                    <div className="text-sm font-medium text-slate-500">Direct impact on strategy - Sell Side Ad formats (Google)</div>
                                 </div>
                                 <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
                                     <div className="mb-2 text-amber-600"><Rocket className="w-6 h-6" /></div>
                                     <div className="text-3xl font-bold text-slate-900 mb-1">0-to-1</div>
-                                    <div className="text-sm font-medium text-slate-500">Product Launches (ZoFit iOS & Radius AI)</div>
+                                    <div className="text-sm font-medium text-slate-500">Product Launches (ZoFit & Radius AI)</div>
                                 </div>
                                 <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
                                     <div className="mb-2 text-emerald-600"><Zap className="w-6 h-6" /></div>
