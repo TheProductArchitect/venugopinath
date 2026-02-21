@@ -62,7 +62,7 @@ const Projects: React.FC = () => {
 
                                 {/* Action Buttons */}
                                 <div className="flex gap-4">
-                                    <a href="https://github.com/venugopinath" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl transition-all shadow-md hover:scale-105 active:scale-95">
+                                    <a href="https://github.com/TheProductArchitect" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl transition-all shadow-md hover:scale-105 active:scale-95">
                                         <Github className="w-5 h-5" />
                                         View Source
                                     </a>
