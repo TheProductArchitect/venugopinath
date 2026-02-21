@@ -1,0 +1,27 @@
+name: Keep Hugging Face Backend Alive
+
+on:
+  schedule:
+    # Runs every 12 hours
+    - cron: '0 */12 * * *'
+  workflow_dispatch: # Allows manual trigger from GH Actions tab
+
+jobs:
+  ping-hf:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          
+      - name: Run ping script
+        run: node scripts/keep_hf_alive.js
+        env:
+          # Optional: You can store your token in GitHub Secrets
+          # For public portfolios, the encoded constant token can be used inside the script
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
