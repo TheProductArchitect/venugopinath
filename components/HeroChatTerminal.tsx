@@ -129,7 +129,7 @@ const HeroChatTerminal: React.FC = () => {
                                     'text-slate-300'
                                 }`}>
                                 {msg.role === 'assistant' && (
-                                    <div className="font-bold text-emerald-400 text-xs mb-1 uppercase tracking-wider">Antigravity Model</div>
+                                    <div className="font-bold text-emerald-400 text-xs mb-1 uppercase tracking-wider">Venu's Assistant</div>
                                 )}
                                 {msg.role === 'user' && (
                                     <div className="font-bold text-indigo-400 text-xs mb-1 uppercase tracking-wider text-right">Guest</div>
