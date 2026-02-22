@@ -14,7 +14,7 @@ const Home: React.FC = () => {
                 title="Venu Gopinath | Cambridge MBA & Ex-Google Product Leader"
                 description="Official portfolio of Venu Gopinath, Cambridge MBA Candidate and former Google Product Strategy Lead. Specializing in Agentic AI systems and enterprise product scaling."
                 canonicalUrl="https://venugopinath.me/"
-                keywords="Venu Nukavarapu, Venu Gopinath Nukavarapu, Venu Gopinath, Senior Product Manager, Cambridge MBA, Google, Agentic AI, Product Strategy Lead"
+                keywords="Venu Nukavarapu, Venu Gopinath Nukavarapu, Venu Gopinath, Senior Product Manager, Head of Product, The Product Architect, Cambridge MBA, Google, Agentic AI, Product Strategy Lead"
             />
 
             {/* Hero Section */}
@@ -310,6 +310,11 @@ const Home: React.FC = () => {
                         </a>
                         <a href="https://linkedin.com/in/venugopinath/" target="_blank" rel="noreferrer" aria-label="Venu Gopinath LinkedIn Profile" className="text-slate-500 hover:text-primary-700 transition-colors">
                             <LinkedInIcon className="w-5 h-5" />
+                        </a>
+                        <a href="https://venugopinath.medium.com/" target="_blank" rel="noreferrer" aria-label="Venu Gopinath Medium Blog" className="text-slate-500 hover:text-primary-700 transition-colors">
+                            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
+                                <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42c1.87 0 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+                            </svg>
                         </a>
                         <a href="mailto:vgnukavarapu@gmail.com" aria-label="Email Venu Gopinath directly" className="text-slate-500 hover:text-primary-700 transition-colors">
                             <MailIcon className="w-5 h-5" />
