@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://venugopinath.me/sitemap.xml
