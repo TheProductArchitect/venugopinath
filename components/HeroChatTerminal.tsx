@@ -34,7 +34,11 @@ const HeroChatTerminal: React.FC = () => {
 
     const scrollToBottom = () => {
         if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+            requestAnimationFrame(() => {
+                if (scrollContainerRef.current) {
+                    scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+                }
+            });
         }
     };
 
