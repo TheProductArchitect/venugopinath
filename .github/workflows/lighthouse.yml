@@ -31,7 +31,7 @@ jobs:
         with:
           urls: |
             http://localhost:4173/
-          configPath: ./.lighthouserc.js
+          configPath: ./.lighthouserc.cjs
           uploadArtifacts: true # Saves the HTML report to GitHub Actions tab
           temporaryPublicStorage: true # Uploads a temporary public link for easy viewing
         env:
