@@ -52,10 +52,25 @@ const Home: React.FC = () => {
                         </div>
 
                         <div className="pt-8 border-t border-slate-200/60 mt-8">
-                            <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Driving impact at:</p>
+                            <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Drove impact at:</p>
                             <div className="flex flex-wrap justify-center md:justify-start items-center gap-8 transition-all duration-500">
                                 <div className="h-8 w-8">
-                                    <CompanyLogo src={LOGOS.CAMBRIDGE} alt="Cambridge" className="h-full w-full" />
+                                    <CompanyLogo src={LOGOS.CAMBRIDGE} alt="Cambridge" className="h-full w-full" priority={true} />
+                                </div>
+                                <div className="h-8 w-24">
+                                    <CompanyLogo src={LOGOS.GOOGLE} alt="Google" className="h-full w-full" priority={true} />
+                                </div>
+                                <div className="h-8 w-16">
+                                    <CompanyLogo src={LOGOS.ASU} alt="ASU" className="h-full w-full" priority={true} />
+                                </div>
+                                <div className="h-8 w-24">
+                                    <CompanyLogo src={LOGOS.RADIUS} alt="Radius" className="h-full w-full" priority={true} />
+                                </div>
+                                <div className="h-8 w-20">
+                                    <CompanyLogo src={LOGOS.ZOFIT} alt="ZoFit" className="h-full w-full" priority={true} />
+                                </div>
+                                <div className="h-8 w-24">
+                                    <CompanyLogo src={LOGOS.ERROR} alt="Error Tech" className="h-full w-full" priority={true} />
                                 </div>
                             </div>
                         </div>
