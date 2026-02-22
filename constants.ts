@@ -64,10 +64,10 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     myRoleDescription: "Served as the strategic engine for the Ad Formats business. I collaborated with Product, Sales, and Engineering leadership to translate technical capabilities into commercial growth, ensuring our GTM strategy aligned with global revenue targets.",
     technologies: ["AdTech", "SQL", "Go-To-Market", "Sales Enablement"],
     achievements: [
-      "📈 Driving strategy for a $1.2B+ ARR Adformat division.",
+      "📈 Driving Adformats strategy that is a primary revenue driver for a $1.2B+ Ad formats division.",
       "🌍 Orchestrating the global GTM for 3 major product launches."
     ],
-    summary: "Led Strategy for a $1.2B Adformat Division",
+    summary: "Led Adformats strategy for a $1.2B Division",
     logoUrl: LOGOS.GOOGLE
   },
   {
