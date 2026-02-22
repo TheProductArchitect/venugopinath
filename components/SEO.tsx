@@ -39,6 +39,45 @@ const SEO: React.FC<SEOProps> = ({
             <meta property="twitter:title" content={title} />
             <meta property="twitter:description" content={description} />
             <meta property="twitter:image" content={image} />
+
+            {/* JSON-LD Structured Data */}
+            <script type="application/ld+json">
+                {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "Person",
+                    "name": "Venu Gopinath",
+                    "jobTitle": "Product Manager & AI Strategist",
+                    "url": "https://venugopinath.me",
+                    "sameAs": [
+                        "https://linkedin.com/in/venugopinath",
+                        "https://github.com/TheProductArchitect"
+                    ],
+                    "alumniOf": [
+                        {
+                            "@type": "CollegeOrUniversity",
+                            "name": "University of Cambridge",
+                            "sameAs": "https://en.wikipedia.org/wiki/University_of_Cambridge"
+                        },
+                        {
+                            "@type": "CollegeOrUniversity",
+                            "name": "Arizona State University",
+                            "sameAs": "https://en.wikipedia.org/wiki/Arizona_State_University"
+                        }
+                    ],
+                    "worksFor": [
+                        {
+                            "@type": "Organization",
+                            "name": "Google",
+                            "sameAs": "https://en.wikipedia.org/wiki/Google"
+                        },
+                        {
+                            "@type": "Organization",
+                            "name": "ZoFit",
+                            "sameAs": "https://zofit.ai"
+                        }
+                    ]
+                })}
+            </script>
         </Helmet>
     );
 };

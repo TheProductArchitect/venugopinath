@@ -11,10 +11,10 @@ const Home: React.FC = () => {
     return (
         <main className="pt-24">
             <SEO
-                title="Venu Gopinath | Product Leader & AI Strategist"
-                description="MBA Candidate at Cambridge & Ex-Google Product Leader. Specializing in 0-to-1 launches, Agentic AI, and scaling technical products for enterprise revenue."
+                title="Venu Gopinath | Cambridge MBA & Ex-Google Product Leader"
+                description="Official portfolio of Venu Gopinath, Cambridge MBA Candidate and former Google Product Strategy Lead. Specializing in Agentic AI systems and enterprise product scaling."
                 canonicalUrl="https://venugopinath.me/"
-                keywords="Venu Gopinath, Product Manager, AI Strategist, MBA Cambridge, Google, Agentic AI, Product Leader"
+                keywords="Venu Gopinath, Venu Gopinath Cambridge MBA, Venu Gopinath Google, Venu Gopinath Product Manager, Agentic AI, Product Strategy Lead"
             />
 
             {/* Hero Section */}
@@ -32,19 +32,20 @@ const Home: React.FC = () => {
                         </div>
 
                         <h1 className="text-5xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1] font-serif">
-                            {HERO_DATA.title}
+                            Venu Gopinath. <br />
+                            <span className="text-3xl lg:text-5xl text-slate-500 mt-2 block">Building 0-to-1 Agentic AI Systems.</span>
                         </h1>
 
                         <p className="text-lg text-slate-600 max-w-xl leading-relaxed mx-auto md:mx-0 font-medium">
-                            {HERO_DATA.tagline}
+                            I am a Cambridge MBA Candidate and former Google Product Strategy Lead bridging the gap between Innovation and Transformation. I architect Agentic Systems that are technically viable and commercially profitable.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                            <a href="#journey" className="px-8 py-4 bg-primary-700 hover:bg-primary-800 text-white font-semibold rounded-xl transition-all shadow-xl shadow-primary-900/10 flex items-center justify-center group hover:scale-105 active:scale-95">
+                            <a href="#journey" aria-label="Explore Venu Gopinath's Career Journey" className="px-8 py-4 bg-primary-700 hover:bg-primary-800 text-white font-semibold rounded-xl transition-all shadow-xl shadow-primary-900/10 flex items-center justify-center group hover:scale-105 active:scale-95">
                                 Explore My Journey
                                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                             </a>
-                            <a href="/Resume_Venu_MBA.pdf" download className="px-8 py-4 bg-white border border-slate-200 hover:border-primary-600 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all flex items-center justify-center shadow-sm group hover:shadow-md active:scale-95">
+                            <a href="/Resume_Venu_MBA.pdf" download aria-label="Download Venu Gopinath's Cambridge MBA Resume" className="px-8 py-4 bg-white border border-slate-200 hover:border-primary-600 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all flex items-center justify-center shadow-sm group hover:shadow-md active:scale-95">
                                 <DownloadIcon className="w-4 h-4 mr-2 text-slate-400 group-hover:text-primary-600 group-hover:translate-y-1 transition-all" />
                                 Download Resume
                             </a>
@@ -72,7 +73,7 @@ const Home: React.FC = () => {
                     <div className="mb-16 md:w-3/4">
                         <h2 className="text-3xl font-bold text-slate-900 font-serif mb-6">Bridging Engineering & Business Strategy</h2>
                         <p className="text-slate-600 leading-relaxed text-lg">
-                            With a foundation in Computer Engineering (MS) and business leadership (Cambridge MBA), I translate complex technical capabilities into revenue. My background spans building 6-layered Agentic AI systems for startups to driving Adformats strategy that is a primary revenue driver for a $1.2B+ Ad formats division at Google.
+                            With a foundation in Computer Engineering (MS) and business leadership (Cambridge MBA), Venu Gopinath translates complex technical capabilities into revenue. My background spans building 6-layered Agentic AI systems for startups to driving Adformats strategy as a primary revenue driver for a $1.2B+ Ad formats division at Google.
                         </p>
                     </div>
 
@@ -225,6 +226,7 @@ const Home: React.FC = () => {
                                 href="https://outlook.office.com/bookwithme/user/42c3b569aca445f089101d7212082816@jbs.cam.ac.uk/meetingtype/HsArlfEFdEakp3Y3Vvfxow2?anonymous&ismsaljsauthenabled&ep=mlink"
                                 target="_blank"
                                 rel="noreferrer"
+                                aria-label="Book a hiring or business meeting with Venu Gopinath"
                                 className="w-full px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-primary-900/20 flex items-center justify-center gap-2 group hover:scale-[1.02] active:scale-95 text-center"
                             >
                                 <Calendar className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
@@ -234,6 +236,7 @@ const Home: React.FC = () => {
                             <div className="grid grid-cols-2 gap-4">
                                 <a
                                     href="mailto:vgnukavarapu@gmail.com"
+                                    aria-label="Send an Email to Venu Gopinath"
                                     className="px-4 py-3 bg-white border border-slate-200 hover:border-primary-600 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all flex items-center justify-center gap-2 group hover:shadow-md active:scale-95 text-sm"
                                 >
                                     <MailIcon className="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors" />
@@ -243,6 +246,7 @@ const Home: React.FC = () => {
                                     href="https://www.linkedin.com/in/venugopinath/"
                                     target="_blank"
                                     rel="noreferrer"
+                                    aria-label="View Venu Gopinath's LinkedIn Profile"
                                     className="px-4 py-3 bg-white border border-slate-200 hover:border-primary-600 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all flex items-center justify-center gap-2 group hover:shadow-md active:scale-95 text-sm"
                                 >
                                     <LinkedInIcon className="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors" />
@@ -271,6 +275,7 @@ const Home: React.FC = () => {
                                 href="https://outlook.office.com/bookwithme/user/42c3b569aca445f089101d7212082816@jbs.cam.ac.uk/meetingtype/N93zglDjuU2FW0JUd-Gmkg2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
                                 target="_blank"
                                 rel="noreferrer"
+                                aria-label="Book a virtual coffee chat with Venu Gopinath"
                                 className="w-full px-8 py-4 bg-white border-2 border-slate-200 hover:border-primary-600 text-slate-800 font-bold rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 group hover:scale-[1.02] active:scale-95"
                             >
                                 <Coffee className="w-5 h-5 text-amber-600 group-hover:scale-110 transition-transform" />
@@ -281,6 +286,7 @@ const Home: React.FC = () => {
                                 href="https://www.linkedin.com/in/venugopinath/"
                                 target="_blank"
                                 rel="noreferrer"
+                                aria-label="Find Venu Gopinath on LinkedIn"
                                 className="w-full px-6 py-3 bg-white border border-slate-200 hover:border-primary-600 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all flex items-center justify-center gap-2 group hover:shadow-md active:scale-95 text-sm"
                             >
                                 <LinkedInIcon className="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors" />
@@ -299,13 +305,13 @@ const Home: React.FC = () => {
                         <p className="text-slate-500 text-sm mt-1">Product Leadership & Strategy</p>
                     </div>
                     <div className="flex gap-6">
-                        <a href="https://github.com/TheProductArchitect" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-primary-700 transition-colors">
+                        <a href="https://github.com/TheProductArchitect" target="_blank" rel="noreferrer" aria-label="Venu Gopinath GitHub Profile" className="text-slate-400 hover:text-primary-700 transition-colors">
                             <Github className="w-5 h-5" />
                         </a>
-                        <a href="https://linkedin.com/in/venugopinath/" className="text-slate-400 hover:text-primary-700 transition-colors">
+                        <a href="https://linkedin.com/in/venugopinath/" target="_blank" rel="noreferrer" aria-label="Venu Gopinath LinkedIn Profile" className="text-slate-400 hover:text-primary-700 transition-colors">
                             <LinkedInIcon className="w-5 h-5" />
                         </a>
-                        <a href="mailto:vgnukavarapu@gmail.com" className="text-slate-400 hover:text-primary-700 transition-colors">
+                        <a href="mailto:vgnukavarapu@gmail.com" aria-label="Email Venu Gopinath directly" className="text-slate-400 hover:text-primary-700 transition-colors">
                             <MailIcon className="w-5 h-5" />
                         </a>
                     </div>

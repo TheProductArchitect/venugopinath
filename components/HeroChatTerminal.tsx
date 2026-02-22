@@ -179,12 +179,14 @@ const HeroChatTerminal: React.FC = () => {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Type your query..."
+                        aria-label="Ask Venu's AI Agent a question"
                         className="w-full bg-slate-800/50 text-slate-100 border border-slate-700 rounded-xl pl-10 pr-12 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600 text-sm font-mono shadow-inner"
                         disabled={isLoading}
                     />
                     <button
                         type="submit"
                         disabled={isLoading || !input.trim()}
+                        aria-label="Send message to AI Agent"
                         className="absolute right-2 p-1.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
                     >
                         <Send className="w-4 h-4" />

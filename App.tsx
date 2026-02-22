@@ -15,19 +15,19 @@ const Navigation = () => {
                     VG<span className="text-primary-600">.</span>
                 </Link>
                 <div className="flex items-center space-x-6">
-                    <Link to="/projects" className="text-sm font-bold text-slate-600 hover:text-primary-700 transition-colors">
+                    <Link to="/projects" aria-label="View Venu Gopinath's Portfolio Projects" className="text-sm font-bold text-slate-600 hover:text-primary-700 transition-colors">
                         Projects
                     </Link>
-                    <a href="https://github.com/TheProductArchitect" target="_blank" rel="noreferrer" className="text-slate-500 hover:text-primary-700 transition-colors">
+                    <a href="https://github.com/TheProductArchitect" target="_blank" rel="noreferrer" aria-label="Venu Gopinath GitHub Profile" className="text-slate-500 hover:text-primary-700 transition-colors">
                         <Github className="w-5 h-5" />
                     </a>
-                    <a href="https://linkedin.com/in/venugopinath/" target="_blank" rel="noreferrer" className="text-slate-500 hover:text-primary-700 transition-colors">
+                    <a href="https://linkedin.com/in/venugopinath/" target="_blank" rel="noreferrer" aria-label="Venu Gopinath LinkedIn Profile" className="text-slate-500 hover:text-primary-700 transition-colors">
                         <LinkedInIcon className="w-5 h-5" />
                     </a>
-                    <a href="mailto:vgnukavarapu@gmail.com" className="text-slate-500 hover:text-primary-700 transition-colors">
+                    <a href="mailto:vgnukavarapu@gmail.com" aria-label="Email Venu Gopinath directly" className="text-slate-500 hover:text-primary-700 transition-colors">
                         <MailIcon className="w-5 h-5" />
                     </a>
-                    <a href="mailto:vgnukavarapu@gmail.com" className="hidden md:block px-5 py-2.5 text-sm font-semibold text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 hover:scale-105 active:scale-95">
+                    <a href="mailto:vgnukavarapu@gmail.com" aria-label="Contact Venu Gopinath" className="hidden md:block px-5 py-2.5 text-sm font-semibold text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 hover:scale-105 active:scale-95">
                         Let's Talk
                     </a>
                 </div>
