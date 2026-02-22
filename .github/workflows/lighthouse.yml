@@ -1,0 +1,38 @@
+name: Lighthouse CI Audit
+
+on:
+  push:
+    branches:
+      - main
+      - '*'
+  pull_request:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build Site
+        run: npm run build
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://localhost:4173/
+          configPath: ./.lighthouserc.js
+          uploadArtifacts: true # Saves the HTML report to GitHub Actions tab
+          temporaryPublicStorage: true # Uploads a temporary public link for easy viewing
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
