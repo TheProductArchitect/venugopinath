@@ -72,7 +72,7 @@ const Home: React.FC = () => {
                     <div className="mb-16 md:w-3/4">
                         <h2 className="text-3xl font-bold text-slate-900 font-serif mb-6">Bridging Engineering & Business Strategy</h2>
                         <p className="text-slate-600 leading-relaxed text-lg">
-                            With a foundation in Computer Engineering (MS) and business leadership (Cambridge MBA), I translate complex technical capabilities into revenue. My background spans building 6-layered Agentic AI systems for startups to driving strategy for Sell-Side Adformats at Google, a main contributor for a $1.2B+ ARR division.
+                            With a foundation in Computer Engineering (MS) and business leadership (Cambridge MBA), I translate complex technical capabilities into revenue. My background spans building 6-layered Agentic AI systems for startups to driving Adformats strategy that is a primary revenue driver for a $1.2B+ Ad formats division at Google.
                         </p>
                     </div>
 
