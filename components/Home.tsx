@@ -321,7 +321,7 @@ const Home: React.FC = () => {
                         </a>
                     </div>
                     <p className="text-slate-500 text-sm">
-                        &copy; {new Date().getFullYear()} Venu Gopinath.
+                        &copy; {new Date().getFullYear()} Venu Gopinath Nukavarapu.
                     </p>
                 </div>
             </section>
