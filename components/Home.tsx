@@ -69,9 +69,6 @@ const Home: React.FC = () => {
                                 <div className="h-8 w-20">
                                     <CompanyLogo src={LOGOS.ZOFIT} alt="ZoFit" className="h-full w-full" priority={true} />
                                 </div>
-                                <div className="h-8 w-24">
-                                    <CompanyLogo src={LOGOS.ERROR} alt="Error Tech" className="h-full w-full" priority={true} />
-                                </div>
                             </div>
                         </div>
                     </div>
