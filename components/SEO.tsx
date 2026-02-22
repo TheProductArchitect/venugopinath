@@ -46,8 +46,13 @@ const SEO: React.FC<SEOProps> = ({
                     "@context": "https://schema.org",
                     "@type": "Person",
                     "name": "Venu Gopinath",
-                    "jobTitle": "Product Manager & AI Strategist",
+                    "alternateName": [
+                        "Venu Nukavarapu",
+                        "Venu Gopinath Nukavarapu"
+                    ],
+                    "jobTitle": "Senior Product Manager & AI Strategist",
                     "url": "https://venugopinath.me",
+                    "image": image,
                     "sameAs": [
                         "https://linkedin.com/in/venugopinath",
                         "https://github.com/TheProductArchitect"

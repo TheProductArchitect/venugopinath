@@ -11,7 +11,7 @@ const Projects: React.FC = () => {
                 title="Featured Projects | Venu Gopinath"
                 description="Explore technical builds, architecture designs, and AI agentic systems developed by Venu Gopinath."
                 canonicalUrl="https://venugopinath.me/projects"
-                keywords="AI Projects, Agentic AI, CI/CD, React Architecture, Technical Product Management, Portfolio"
+                keywords="Venu Nukavarapu projects, Venu Gopinath Nukavarapu portfolio, Senior Product Manager, AI Projects, Agentic AI, CI/CD, React Architecture"
             />
             <div className="max-w-6xl mx-auto px-6">
 

@@ -14,7 +14,7 @@ const Home: React.FC = () => {
                 title="Venu Gopinath | Cambridge MBA & Ex-Google Product Leader"
                 description="Official portfolio of Venu Gopinath, Cambridge MBA Candidate and former Google Product Strategy Lead. Specializing in Agentic AI systems and enterprise product scaling."
                 canonicalUrl="https://venugopinath.me/"
-                keywords="Venu Gopinath, Venu Gopinath Cambridge MBA, Venu Gopinath Google, Venu Gopinath Product Manager, Agentic AI, Product Strategy Lead"
+                keywords="Venu Nukavarapu, Venu Gopinath Nukavarapu, Venu Gopinath, Senior Product Manager, Cambridge MBA, Google, Agentic AI, Product Strategy Lead"
             />
 
             {/* Hero Section */}
