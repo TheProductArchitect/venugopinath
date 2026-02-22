@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Directories
+Disallow: /assets/
+Disallow: /node_modules/
+
+# Sitemaps
+Sitemap: https://venugopinath.me/sitemap.xml
