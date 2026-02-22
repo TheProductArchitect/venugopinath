@@ -132,7 +132,7 @@ const Chatbot: React.FC = () => {
               <Bot className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="text-white font-bold text-sm">Venu's AI Agent</h3>
+              <p className="text-white font-bold text-sm">Venu's AI Agent</p>
               <span className="flex items-center text-[10px] text-primary-100">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 mr-1 animate-pulse"></span>
                 Online
@@ -152,17 +152,17 @@ const Chatbot: React.FC = () => {
             <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div className={`flex max-w-[85%] ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'} items-end gap-2`}>
                 <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 mb-1 ${msg.role === 'user' ? 'bg-primary-600' :
-                    msg.role === 'system' ? 'bg-red-100' : 'bg-white border border-slate-200'
+                  msg.role === 'system' ? 'bg-red-100' : 'bg-white border border-slate-200'
                   }`}>
                   {msg.role === 'user' ? <User className="w-3 h-3 text-white" /> :
                     msg.role === 'system' ? <AlertCircle className="w-3 h-3 text-red-600" /> :
                       <Bot className="w-3 h-3 text-primary-600" />}
                 </div>
                 <div className={`p-3 rounded-2xl text-sm shadow-sm ${msg.role === 'user'
-                    ? 'bg-primary-600 text-white rounded-br-none'
-                    : msg.role === 'system'
-                      ? 'bg-red-50 text-red-600 border border-red-100 rounded-bl-none'
-                      : 'bg-white text-slate-700 rounded-bl-none border border-slate-100'
+                  ? 'bg-primary-600 text-white rounded-br-none'
+                  : msg.role === 'system'
+                    ? 'bg-red-50 text-red-600 border border-red-100 rounded-bl-none'
+                    : 'bg-white text-slate-700 rounded-bl-none border border-slate-100'
                   }`}>
                   {msg.content}
                 </div>
@@ -173,7 +173,7 @@ const Chatbot: React.FC = () => {
             <div className="flex justify-start pl-8">
               <div className="bg-white p-3 rounded-2xl rounded-bl-none border border-slate-100 shadow-sm flex items-center space-x-2">
                 <Loader2 className="w-4 h-4 animate-spin text-primary-600" />
-                <span className="text-xs text-slate-400">Processing...</span>
+                <span className="text-xs text-slate-500">Processing...</span>
               </div>
             </div>
           )}
@@ -189,7 +189,7 @@ const Chatbot: React.FC = () => {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about product strategy..."
               aria-label="Ask Venu's AI Agent a question"
-              className="w-full bg-slate-50 text-slate-900 border border-slate-200 rounded-full pl-4 pr-12 py-3 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all placeholder:text-slate-400 text-sm shadow-inner"
+              className="w-full bg-slate-50 text-slate-900 border border-slate-200 rounded-full pl-4 pr-12 py-3 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all placeholder:text-slate-500 text-sm shadow-inner"
             />
             <button
               type="submit"

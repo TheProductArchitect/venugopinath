@@ -46,13 +46,13 @@ const Home: React.FC = () => {
                                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                             </a>
                             <a href="/Resume_Venu_MBA.pdf" download aria-label="Download Venu Gopinath's Cambridge MBA Resume" className="px-8 py-4 bg-white border border-slate-200 hover:border-primary-600 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all flex items-center justify-center shadow-sm group hover:shadow-md active:scale-95">
-                                <DownloadIcon className="w-4 h-4 mr-2 text-slate-400 group-hover:text-primary-600 group-hover:translate-y-1 transition-all" />
+                                <DownloadIcon className="w-4 h-4 mr-2 text-slate-500 group-hover:text-primary-600 group-hover:translate-y-1 transition-all" />
                                 Download Resume
                             </a>
                         </div>
 
                         <div className="pt-8 border-t border-slate-200/60 mt-8">
-                            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Driving impact at:</p>
+                            <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Driving impact at:</p>
                             <div className="flex flex-wrap justify-center md:justify-start items-center gap-8 transition-all duration-500">
                                 <div className="h-8 w-8">
                                     <CompanyLogo src={LOGOS.CAMBRIDGE} alt="Cambridge" className="h-full w-full" />
@@ -239,7 +239,7 @@ const Home: React.FC = () => {
                                     aria-label="Send an Email to Venu Gopinath"
                                     className="px-4 py-3 bg-white border border-slate-200 hover:border-primary-600 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all flex items-center justify-center gap-2 group hover:shadow-md active:scale-95 text-sm"
                                 >
-                                    <MailIcon className="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors" />
+                                    <MailIcon className="w-4 h-4 text-slate-500 group-hover:text-primary-600 transition-colors" />
                                     Send Email
                                 </a>
                                 <a
@@ -249,7 +249,7 @@ const Home: React.FC = () => {
                                     aria-label="View Venu Gopinath's LinkedIn Profile"
                                     className="px-4 py-3 bg-white border border-slate-200 hover:border-primary-600 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all flex items-center justify-center gap-2 group hover:shadow-md active:scale-95 text-sm"
                                 >
-                                    <LinkedInIcon className="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors" />
+                                    <LinkedInIcon className="w-4 h-4 text-slate-500 group-hover:text-primary-600 transition-colors" />
                                     LinkedIn Profile
                                 </a>
                             </div>
@@ -289,7 +289,7 @@ const Home: React.FC = () => {
                                 aria-label="Find Venu Gopinath on LinkedIn"
                                 className="w-full px-6 py-3 bg-white border border-slate-200 hover:border-primary-600 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all flex items-center justify-center gap-2 group hover:shadow-md active:scale-95 text-sm"
                             >
-                                <LinkedInIcon className="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors" />
+                                <LinkedInIcon className="w-4 h-4 text-slate-500 group-hover:text-primary-600 transition-colors" />
                                 Find me on LinkedIn
                             </a>
                         </div>
@@ -305,17 +305,17 @@ const Home: React.FC = () => {
                         <p className="text-slate-500 text-sm mt-1">Product Leadership & Strategy</p>
                     </div>
                     <div className="flex gap-6">
-                        <a href="https://github.com/TheProductArchitect" target="_blank" rel="noreferrer" aria-label="Venu Gopinath GitHub Profile" className="text-slate-400 hover:text-primary-700 transition-colors">
+                        <a href="https://github.com/TheProductArchitect" target="_blank" rel="noreferrer" aria-label="Venu Gopinath GitHub Profile" className="text-slate-500 hover:text-primary-700 transition-colors">
                             <Github className="w-5 h-5" />
                         </a>
-                        <a href="https://linkedin.com/in/venugopinath/" target="_blank" rel="noreferrer" aria-label="Venu Gopinath LinkedIn Profile" className="text-slate-400 hover:text-primary-700 transition-colors">
+                        <a href="https://linkedin.com/in/venugopinath/" target="_blank" rel="noreferrer" aria-label="Venu Gopinath LinkedIn Profile" className="text-slate-500 hover:text-primary-700 transition-colors">
                             <LinkedInIcon className="w-5 h-5" />
                         </a>
-                        <a href="mailto:vgnukavarapu@gmail.com" aria-label="Email Venu Gopinath directly" className="text-slate-400 hover:text-primary-700 transition-colors">
+                        <a href="mailto:vgnukavarapu@gmail.com" aria-label="Email Venu Gopinath directly" className="text-slate-500 hover:text-primary-700 transition-colors">
                             <MailIcon className="w-5 h-5" />
                         </a>
                     </div>
-                    <p className="text-slate-400 text-sm">
+                    <p className="text-slate-500 text-sm">
                         &copy; {new Date().getFullYear()} Venu Gopinath.
                     </p>
                 </div>

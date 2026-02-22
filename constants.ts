@@ -34,8 +34,8 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     myRoleDescription: "Identified a gap in the fitness market for hyper-personalized coaching. Bootstrapped the product vision from a whiteboard concept to a fully deployed iOS app in under 6 months, leveraging open-source LLMs to build a cost-effective Agentic architecture.",
     technologies: ["Agentic AI", "Open-source LLMs", "iOS Development", "Product Strategy"],
     achievements: [
-      "🚀 Launching MVP in 6 months with 0-to-1 architecture.",
-      "📉 Cutting API costs by 50% via custom model orchestration."
+      "🚀 Launched MVP in 6 months with 0-to-1 architecture.",
+      "📉 Cut API costs by 50% via custom model orchestration."
     ],
     summary: "Founding a 0-to-1 Agentic AI Startup",
     logoUrl: LOGOS.ZOFIT
@@ -64,10 +64,10 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     myRoleDescription: "Served as the strategic engine for the Ad Formats business. I collaborated with Product, Sales, and Engineering leadership to translate technical capabilities into commercial growth, ensuring our GTM strategy aligned with global revenue targets.",
     technologies: ["AdTech", "SQL", "Go-To-Market", "Sales Enablement"],
     achievements: [
-      "📈 Driving Adformats strategy that is a primary revenue driver for a $1.2B+ Ad formats division.",
-      "🌍 Orchestrating the global GTM for 3 major product launches."
+      "📈 Drove Adformats strategy that is a primary revenue driver for a $1.2B+ Ad formats division.",
+      "🌍 Orchestrated the global GTM for 3 major product launches."
     ],
-    summary: "Led Adformats strategy for a $1.2B Division",
+    summary: "Led Adformats strategy, Sell-Side Google Ads",
     logoUrl: LOGOS.GOOGLE
   },
   {

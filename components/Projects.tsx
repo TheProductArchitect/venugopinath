@@ -17,7 +17,7 @@ const Projects: React.FC = () => {
 
                 {/* Header */}
                 <div className="mb-12">
-                    <Link to="/" className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-primary-600 transition-colors mb-6 group">
+                    <Link to="/" aria-label="Go back to Home Profile" className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-primary-600 transition-colors mb-6 group">
                         <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
                         Back to Profile
                     </Link>
@@ -69,7 +69,7 @@ const Projects: React.FC = () => {
 
                                 {/* Action Buttons */}
                                 <div className="flex gap-4">
-                                    <a href="https://github.com/TheProductArchitect" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl transition-all shadow-md hover:scale-105 active:scale-95">
+                                    <a href="https://github.com/TheProductArchitect" target="_blank" rel="noreferrer" aria-label="View source code on GitHub" className="flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl transition-all shadow-md hover:scale-105 active:scale-95">
                                         <Github className="w-5 h-5" />
                                         View Source
                                     </a>
@@ -89,11 +89,11 @@ const Projects: React.FC = () => {
 
                     {/* Future Projects Placeholder - Can be populated later */}
                     <div className="text-center py-12 border-2 border-dashed border-slate-200 rounded-3xl">
-                        <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-slate-400">
+                        <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-slate-500">
                             <Code className="w-8 h-8" />
                         </div>
                         <h2 className="text-xl font-bold text-slate-500 font-serif mb-2">More projects coming soon</h2>
-                        <p className="text-slate-400">Working on documenting other AI pipelines and system architectures.</p>
+                        <p className="text-slate-500">Working on documenting other AI pipelines and system architectures.</p>
                     </div>
 
                 </div>
