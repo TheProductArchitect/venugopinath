@@ -5,9 +5,10 @@ interface CompanyLogoProps {
   src?: string;
   alt: string;
   className?: string;
+  priority?: boolean;
 }
 
-const CompanyLogo: React.FC<CompanyLogoProps> = ({ src, alt, className = "w-full h-full" }) => {
+const CompanyLogo: React.FC<CompanyLogoProps> = ({ src, alt, className = "w-full h-full", priority = false }) => {
   const [error, setError] = useState(false);
 
   // If no source or if image failed to load, show a subtle generic icon
@@ -21,11 +22,11 @@ const CompanyLogo: React.FC<CompanyLogoProps> = ({ src, alt, className = "w-full
 
   return (
     <div className={`${className} flex items-center justify-center bg-transparent`}>
-      <img 
-        src={src} 
-        alt={alt} 
+      <img
+        src={src}
+        alt={alt}
         className="w-full h-full object-contain"
-        loading="lazy"
+        {...(priority ? { fetchPriority: 'high' } : { loading: 'lazy' })}
         onError={() => setError(true)}
       />
     </div>

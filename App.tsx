@@ -4,7 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Github } from 'lucide-react';
 import Home from './components/Home';
 import Projects from './components/Projects';
-import Chatbot from './components/Chatbot';
+const Chatbot = React.lazy(() => import('./components/Chatbot'));
 import { LinkedInIcon, MailIcon, DownloadIcon } from './components/Icon';
 
 const Navigation = () => {
@@ -58,7 +58,9 @@ const App: React.FC = () => {
                         <Route path="/projects" element={<Projects />} />
                     </Routes>
 
-                    <Chatbot />
+                    <React.Suspense fallback={null}>
+                        <Chatbot />
+                    </React.Suspense>
 
                     <div
                         className={`fixed bottom-24 left-6 z-50 bg-white px-4 py-3 rounded-xl shadow-xl border border-slate-200 transition-all duration-500 transform origin-bottom-left ${showResumeTooltip ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-4 pointer-events-none'
