@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Github } from 'lucide-react';
 import Home from './components/Home';
 import Projects from './components/Projects';
@@ -47,46 +48,48 @@ const App: React.FC = () => {
     }, []);
 
     return (
-        <Router>
-            <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-primary-100 selection:text-primary-900">
-                <Navigation />
+        <HelmetProvider>
+            <Router>
+                <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-primary-100 selection:text-primary-900">
+                    <Navigation />
 
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/projects" element={<Projects />} />
-                </Routes>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/projects" element={<Projects />} />
+                    </Routes>
 
-                <Chatbot />
+                    <Chatbot />
 
-                <div
-                    className={`fixed bottom-24 left-6 z-50 bg-white px-4 py-3 rounded-xl shadow-xl border border-slate-200 transition-all duration-500 transform origin-bottom-left ${showResumeTooltip ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-4 pointer-events-none'
-                        }`}
-                >
-                    <div className="flex items-center gap-3">
-                        <span className="relative flex h-2.5 w-2.5 shrink-0">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-600"></span>
-                        </span>
-                        <p className="text-sm font-semibold text-slate-800 whitespace-nowrap">Download Resume</p>
+                    <div
+                        className={`fixed bottom-24 left-6 z-50 bg-white px-4 py-3 rounded-xl shadow-xl border border-slate-200 transition-all duration-500 transform origin-bottom-left ${showResumeTooltip ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-4 pointer-events-none'
+                            }`}
+                    >
+                        <div className="flex items-center gap-3">
+                            <span className="relative flex h-2.5 w-2.5 shrink-0">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-600"></span>
+                            </span>
+                            <p className="text-sm font-semibold text-slate-800 whitespace-nowrap">Download Resume</p>
+                        </div>
+                        {/* Tooltip Arrow */}
+                        <div className="absolute -bottom-1.5 left-6 w-3 h-3 bg-white border-b border-r border-slate-200 transform rotate-45"></div>
                     </div>
-                    {/* Tooltip Arrow */}
-                    <div className="absolute -bottom-1.5 left-6 w-3 h-3 bg-white border-b border-r border-slate-200 transform rotate-45"></div>
-                </div>
 
-                <a
-                    href="/Resume_Venu_MBA.pdf"
-                    download
-                    onClick={() => setShowResumeTooltip(false)}
-                    className="fixed bottom-6 left-6 z-40 bg-white text-slate-700 rounded-full shadow-lg border border-slate-200 transition-all duration-300 group flex items-center gap-0 hover:gap-3 p-4 hover:pr-6 overflow-hidden max-w-[58px] hover:max-w-[240px] hover:border-primary-600 hover:shadow-xl"
-                    title="Download Resume"
-                >
-                    <DownloadIcon className="w-6 h-6 group-hover:text-primary-600 transition-all shrink-0 group-hover:translate-y-1" />
-                    <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-bold text-sm text-primary-700">
-                        Download Resume
-                    </span>
-                </a>
-            </div>
-        </Router>
+                    <a
+                        href="/Resume_Venu_MBA.pdf"
+                        download
+                        onClick={() => setShowResumeTooltip(false)}
+                        className="fixed bottom-6 left-6 z-40 bg-white text-slate-700 rounded-full shadow-lg border border-slate-200 transition-all duration-300 group flex items-center gap-0 hover:gap-3 p-4 hover:pr-6 overflow-hidden max-w-[58px] hover:max-w-[240px] hover:border-primary-600 hover:shadow-xl"
+                        title="Download Resume"
+                    >
+                        <DownloadIcon className="w-6 h-6 group-hover:text-primary-600 transition-all shrink-0 group-hover:translate-y-1" />
+                        <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-bold text-sm text-primary-700">
+                            Download Resume
+                        </span>
+                    </a>
+                </div>
+            </Router>
+        </HelmetProvider>
     );
 };
 

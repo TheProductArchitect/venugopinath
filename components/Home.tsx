@@ -5,10 +5,18 @@ import Timeline from './Timeline';
 import CompanyLogo from './CompanyLogo';
 import { LinkedInIcon, MailIcon, DownloadIcon } from './Icon';
 import HeroChatTerminal from './HeroChatTerminal';
+import SEO from './SEO';
 
 const Home: React.FC = () => {
     return (
         <main className="pt-24">
+            <SEO
+                title="Venu Gopinath | Product Leader & AI Strategist"
+                description="MBA Candidate at Cambridge & Ex-Google Product Leader. Specializing in 0-to-1 launches, Agentic AI, and scaling technical products for enterprise revenue."
+                canonicalUrl="https://venugopinath.me/"
+                keywords="Venu Gopinath, Product Manager, AI Strategist, MBA Cambridge, Google, Agentic AI, Product Leader"
+            />
+
             {/* Hero Section */}
             <section className="relative px-6 py-12 md:py-20 max-w-7xl mx-auto overflow-hidden">
                 <div className="absolute top-0 right-0 -z-10 w-[800px] h-[800px] bg-primary-100/40 rounded-full blur-[100px] opacity-60 pointer-events-none translate-x-1/3 -translate-y-1/4" />
@@ -75,7 +83,7 @@ const Home: React.FC = () => {
                                     <Code className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-bold text-slate-900">Technical Product Management</h4>
+                                    <h3 className="text-lg font-bold text-slate-900">Technical Product Management</h3>
                                     <p className="text-slate-500 mt-2 leading-relaxed">
                                         From API design to GTM strategy. Experience scaling SaaS platforms and reducing time-to-market by 15% through strategic roadmapping.
                                     </p>
@@ -87,7 +95,7 @@ const Home: React.FC = () => {
                                     <Layers className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-bold text-slate-900">AI & Data Strategy</h4>
+                                    <h3 className="text-lg font-bold text-slate-900">AI & Data Strategy</h3>
                                     <p className="text-slate-500 mt-2 leading-relaxed">
                                         Architecting agentic AI systems and ensuring 95% data accuracy for autonomous analytics pipelines.
                                     </p>
@@ -99,7 +107,7 @@ const Home: React.FC = () => {
                                     <Rocket className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-bold text-slate-900">Entrepreneurial Leadership</h4>
+                                    <h3 className="text-lg font-bold text-slate-900">Entrepreneurial Leadership</h3>
                                     <p className="text-slate-500 mt-2 leading-relaxed">
                                         Proven ability to scale teams from 4 to 50 and lead cross-functional vendor teams across design and engineering.
                                     </p>
@@ -150,17 +158,17 @@ const Home: React.FC = () => {
             <section className="py-20 bg-white border-t border-slate-200">
                 <div className="max-w-6xl mx-auto px-6 space-y-20">
                     <div>
-                        <h3 className="text-2xl font-bold font-serif text-slate-900 mb-8 flex items-center">
+                        <h2 className="text-2xl font-bold font-serif text-slate-900 mb-8 flex items-center">
                             <span className="w-8 h-1.5 bg-indigo-600 rounded-full mr-4"></span> Education
-                        </h3>
+                        </h2>
                         <div className="grid md:grid-cols-2 gap-8">
                             {EDUCATION_DATA.map((edu, i) => (
                                 <div key={i} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex gap-4 items-start hover:shadow-md transition-shadow h-full">
                                     <div className="w-16 h-16 shrink-0 bg-slate-50 rounded-lg flex items-center justify-center p-0.5 border border-slate-100">
-                                        <CompanyLogo src={edu.logo} alt={edu.school} />
+                                        <CompanyLogo src={edu.logo} alt={`${edu.school} Logo`} />
                                     </div>
                                     <div className="flex-1">
-                                        <h4 className="text-lg font-bold text-slate-900">{edu.school}</h4>
+                                        <h3 className="text-lg font-bold text-slate-900">{edu.school}</h3>
                                         <p className="text-primary-600 font-medium text-sm mb-2">{edu.degree}</p>
                                         <div className="flex justify-between items-center text-xs text-slate-500 uppercase tracking-wide font-semibold">
                                             <span>{edu.location}</span>
@@ -173,17 +181,17 @@ const Home: React.FC = () => {
                     </div>
 
                     <div>
-                        <h3 className="text-2xl font-bold font-serif text-slate-900 mb-8 flex items-center">
+                        <h2 className="text-2xl font-bold font-serif text-slate-900 mb-8 flex items-center">
                             <span className="w-8 h-1.5 bg-emerald-500 rounded-full mr-4"></span> Certifications
-                        </h3>
+                        </h2>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {CERTIFICATIONS_DATA.map((cert, i) => (
                                 <div key={i} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow h-full">
                                     <div className="w-12 h-12 shrink-0 bg-slate-50 rounded-lg flex items-center justify-center p-1.5 border border-slate-100 relative">
-                                        <CompanyLogo src={cert.logo} alt={cert.org} />
+                                        <CompanyLogo src={cert.logo} alt={`${cert.org} Logo`} />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-slate-900 text-sm md:text-base leading-tight">{cert.name}</h4>
+                                        <h3 className="font-bold text-slate-900 text-sm md:text-base leading-tight">{cert.name}</h3>
                                         <div className="text-slate-500 text-xs md:text-sm mt-1">
                                             {cert.org} <span className="mx-1 text-slate-300">•</span> {cert.year}
                                         </div>

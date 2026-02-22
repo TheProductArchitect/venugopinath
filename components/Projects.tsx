@@ -2,10 +2,17 @@ import React from 'react';
 import { ArrowLeft, ExternalLink, Github, Code, Layout, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProjectWebsiteAnim from './ProjectWebsiteAnim';
+import SEO from './SEO';
 
 const Projects: React.FC = () => {
     return (
         <main className="pt-24 min-h-screen bg-slate-50 text-slate-900 pb-20">
+            <SEO
+                title="Featured Projects | Venu Gopinath"
+                description="Explore technical builds, architecture designs, and AI agentic systems developed by Venu Gopinath."
+                canonicalUrl="https://venugopinath.me/projects"
+                keywords="AI Projects, Agentic AI, CI/CD, React Architecture, Technical Product Management, Portfolio"
+            />
             <div className="max-w-6xl mx-auto px-6">
 
                 {/* Header */}
@@ -85,7 +92,7 @@ const Projects: React.FC = () => {
                         <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-slate-400">
                             <Code className="w-8 h-8" />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-500 font-serif mb-2">More projects coming soon</h3>
+                        <h2 className="text-xl font-bold text-slate-500 font-serif mb-2">More projects coming soon</h2>
                         <p className="text-slate-400">Working on documenting other AI pipelines and system architectures.</p>
                     </div>
 
